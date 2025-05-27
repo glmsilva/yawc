@@ -1,0 +1,3 @@
+/home/guim/learnspace/cc/wctool/c/yawc/build/CMakeFiles/yawc.dir
+/home/guim/learnspace/cc/wctool/c/yawc/build/CMakeFiles/edit_cache.dir
+/home/guim/learnspace/cc/wctool/c/yawc/build/CMakeFiles/rebuild_cache.dir
