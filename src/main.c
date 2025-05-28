@@ -3,7 +3,7 @@
 #include <limits.h>
 
 int main(int argc, char* argv[]) {
-    if (argc >= 2) {
+    if (argc >= 3) {
         if (strcmp(argv[1], "-c") == 0){
             char *op = argv[1];
             char *path = argv[2];
