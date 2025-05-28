@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/yawc.dir/src/main.c.o -o yawc  -lm 
