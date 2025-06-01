@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <wchar.h>
+#include <locale.h>
 
 int main(int argc, char *argv[])
 {
@@ -67,7 +69,7 @@ int main(int argc, char *argv[])
 
             printf("%d %s\n", line_count, path);
         }
-        else if (strcmp(op, "w"))
+        else if (strcmp(op, "-w") == 0)
         {
             FILE *file = fopen(path, "r");
 
@@ -105,6 +107,29 @@ int main(int argc, char *argv[])
 
             printf("%ld %s\n", word_count, path);
         }
+        else if (strcmp(op, "-m") == 0)
+        {
+            FILE *file = fopen(path, "r");
+
+            if (!file)
+            {
+                fprintf(stderr, "Error handling file %s\n", path);
+                return 1;
+            }
+
+            int c;
+            int char_counter = 0;
+
+            setlocale(LC_ALL, "");
+
+            while ((c = fgetwc(file) != WEOF))
+            {
+                char_counter++;
+            }
+
+            fclose(file);
+            printf("%d", char_counter);
+        }        
     }
 
     return 0;
