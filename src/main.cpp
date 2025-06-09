@@ -7,10 +7,11 @@ int main(int argc, char *argv[])
 {
     cxxopts::Options options("Yawc", "Yet Another Word Counter");
 
-    options.add_options()("c, bytes", "Count bytesize",
-                          cxxopts::value<std::string>())(
-        "l, lines", "Count lines", cxxopts::value<std::string>())(
-        "w, words", "Count words", cxxopts::value<std::string>());
+    options.add_options()
+    ("c, bytes", "Count bytesize", cxxopts::value<std::string>())
+    ("l, lines", "Count lines", cxxopts::value<std::string>())
+    ("w, words", "Count words", cxxopts::value<std::string>())
+    ("m, multibyte", "Count characters", cxxopts::value<std::string>());
 
     auto result = options.parse(argc, argv);
 
@@ -96,6 +97,10 @@ int main(int argc, char *argv[])
         }
 
         std::cout << word_counter << '\n';
+    }
+    if (result.count("m"))
+    {
+        std::cout << "Carateres" << std::endl;
     }
     return 0;
 }
