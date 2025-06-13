@@ -2,6 +2,7 @@
 #include <cxxopts.hpp>
 #include <fstream>
 #include <iostream>
+#include <clocale>
 
 int main(int argc, char *argv[])
 {
@@ -98,9 +99,40 @@ int main(int argc, char *argv[])
 
         std::cout << word_counter << '\n';
     }
+
     if (result.count("m"))
     {
-        std::cout << "Carateres" << std::endl;
+        std::string path{};
+
+        path = result["m"].as<std::string>();
+
+        std::ifstream file(path);
+
+        if (!file)
+        {
+            std::cerr << "Error handling file" << "\n";
+            return 1;
+        }
+
+        int char_counter{};
+
+        std::setlocale(LC_ALL, nullptr);
+
+        for (std::string line; std::getline(file, line);)
+        {
+            for (char ch : line)
+            {
+                char_counter++;
+            }
+        }
+
+        std::cout << char_counter << "\n";
     }
+
+    for (const auto& option : result.unmatched())
+    {
+        std::cout << "Default option" << std::endl;
+    }
+
     return 0;
 }
